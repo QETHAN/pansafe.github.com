@@ -8,14 +8,14 @@ head
     meta(name="keywords",content=getPreparedKeywords())
     meta(name="author",content=site.author||'')
     !=getBlock('meta').toHTML()
-    !=getBlock('styles').add(["/vendor/twitter-bootstrap/css/bootstrap.css","/vendor/twitter-bootstrap/css/bootstrap-responsive.css","/styles/style.css"]).toHTML()
+    !=getBlock('styles').add(["vendor/twitter-bootstrap/css/bootstrap.css","vendor/twitter-bootstrap/css/bootstrap-responsive.css","styles/style.css"]).toHTML()
     //if lt IE 9
       script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
-    //- link(rel='shortcut icon', href='../assets/ico/favicon.ico')
-    //- link(rel='apple-touch-icon-precomposed', sizes='144x144', href='../assets/ico/apple-touch-icon-144-precomposed.png')
-    //- link(rel='apple-touch-icon-precomposed', sizes='114x114', href='../assets/ico/apple-touch-icon-114-precomposed.png')
-    //- link(rel='apple-touch-icon-precomposed', sizes='72x72', href='../assets/ico/apple-touch-icon-72-precomposed.png')
-    //- link(rel='apple-touch-icon-precomposed', href='../assets/ico/apple-touch-icon-57-precomposed.png')
+    link(rel='shortcut icon', href='ico/favicon.ico')
+    link(rel='apple-touch-icon-precomposed', sizes='144x144', href='ico/apple-touch-icon-144-precomposed.png')
+    link(rel='apple-touch-icon-precomposed', sizes='114x114', href='ico/apple-touch-icon-114-precomposed.png')
+    link(rel='apple-touch-icon-precomposed', sizes='72x72', href='ico/apple-touch-icon-72-precomposed.png')
+    link(rel='apple-touch-icon-precomposed', href='ico/apple-touch-icon-57-precomposed.png')
   body
     .container.navbar-wrapper
       .navbar.navbar-inverse
@@ -44,7 +44,7 @@ head
           a(href='#') Privacy
           | ·
           a(href='#') Terms 
-    !=getBlock('scripts').add(["/vendor/jquery.js","/vendor/log.js","/vendor/modernizr.js","/scripts/script.js"]).toHTML()
+    !=getBlock('scripts').add(["vendor/jquery.js","vendor/log.js","vendor/modernizr.js","scripts/script.js"]).toHTML()
     script
       !function ($) {
       $(function(){
