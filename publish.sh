@@ -1,7 +1,5 @@
 rm -R -f ./out
 git clone git@github.com:pansafe/pansafe.github.com.git --branch master ./out
-npm install
-npm update
 if [ -e $GITHUB_USERNAME ] 
 then  
   echo -e "请输入你的Github用户名:\c"
