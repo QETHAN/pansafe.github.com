@@ -69,6 +69,8 @@ docpadConfig = {
     # For instance, this one will fetch in all documents that have pageOrder set within their meta data
     pages: (database) ->
       database.findAllLive({pageOrder: $exists: true}, [pageOrder:1,title:1])
+    carousel: (database) ->
+      database.findAllLive({relativeOutDirPath:'carousel'},[url:1])
   plugins:
     feedr:
       feeds:

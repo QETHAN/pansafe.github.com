@@ -33,7 +33,8 @@
 		"docpad-plugin-coffeescript": "2.x",
 		"docpad-plugin-marked": "2.x",
 		"docpad-plugin-jade": "2.x",
-		"docpad-plugin-feedr": "2.x"
+		"docpad-plugin-feedr": "2.x",
+		"docpad-plugin-associatedfiles":"2.x"
 	},
 	"main": "node_modules/docpad/bin/docpad-server"
 }

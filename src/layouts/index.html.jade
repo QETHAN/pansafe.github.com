@@ -2,25 +2,28 @@ extends default.html
 block content
   #myCarousel.carousel.slide
     .carousel-inner
-      for member in feedr.feeds.githubMembers
-        .item
-          img(src=member.avatar_url, alt='')
-          .container
-            .carousel-caption
-              h1 #{member.login}
-              a.btn.btn-large.btn-primary(href='#') Sign up today
+      for page in getCollection('pages').toArray()
+        for pic,i in JSON.parse(JSON.stringify(page.getAssociatedFiles()))
+          .item(class=(i||'active'))
+            img(src=pic.relativeOutPath, alt='')
+            .container
+              .carousel-caption
+                h1 #{pic.basename}
+                a.btn.btn-large.btn-primary(href=page.get('relativeOutPath')) #{page.get('title')}
     a.left.carousel-control(href='#myCarousel', data-slide='prev') ‹
     a.right.carousel-control(href='#myCarousel', data-slide='next') ›
   .container.marketing
-    .row#members
-      for member in feedr.feeds.githubMembers
-        .span4
-          img.img-circle(src=member.avatar_url,style='width:100px;')
-          h2 #{member.login}
-          p
-            a.btn(href='http://#{member.login}.github.com/') View on Github »
+    #members
+      h1 团队成员
+      .row
+        for member in feedr.feeds.githubMembers
+          .span2
+            a(href='http://#{member.login}.github.com/',title='去github上看看他/她')
+              img.img-circle(src=member.avatar_url,style='width:100%;max-width:80px;')
+            h2 #{member.login}
     #repos
       hr.featurette-divider
+      h1 团队项目
       for repo,i in feedr.feeds.githubRepos
         .featurette
           if i%2
