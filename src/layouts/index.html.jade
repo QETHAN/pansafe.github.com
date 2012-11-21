@@ -1,0 +1,35 @@
+extends default.html
+block content
+  pre=feedr.feeds.githubRepos.length
+  #myCarousel.carousel.slide
+    .carousel-inner
+      for member in feedr.feeds.githubMembers
+        .item
+          img(src=member.avatar_url, alt='')
+          .container
+            .carousel-caption
+              h1 #{member.login}
+              a.btn.btn-large.btn-primary(href='#') Sign up today
+    a.left.carousel-control(href='#myCarousel', data-slide='prev') ‹
+    a.right.carousel-control(href='#myCarousel', data-slide='next') ›
+  .container.marketing
+    .row
+      for member in feedr.feeds.githubMembers
+        .span4
+          img.img-circle(src=member.avatar_url,style='width:100px;')
+          h2 #{member.login}
+          p
+            a.btn(href='http://#{member.login}.github.com/') View on Github »
+    hr.featurette-divider
+    for repo,i in feedr.feeds.githubRepos
+      .featurette
+        if i%2
+          img.featurette-image.pull-left(src='#{repo.name}/logo.png')
+        else
+          img.featurette-image.pull-right(src='#{repo.name}/logo.png')
+        h2.featurette-heading
+          | #{repo.name}
+          span.muted #{repo.fullname}
+        p.lead
+          | !{repo.description}
+      hr.featurette-divider
