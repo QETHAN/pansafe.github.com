@@ -3,7 +3,7 @@
 
 
 /* TEAM */
-  <your title>: <your name>
+  盘石软件研发团队: 尹志翔
   Site:
   Twitter:
   Location:
