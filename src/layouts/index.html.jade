@@ -18,21 +18,24 @@ block content
       .row
         for member in feedr.feeds.githubMembers
           .span2
-            a(href='https://github.com/#{member.login}/',title='去github上看看他/她')
+            a(href='https://github.com/#{member.login}/',title='去github上看看他/她',target='_blank')
               img.img-circle(src=member.avatar_url,style='width:100%;max-width:80px;')
             h2 #{member.login}
     #repos
       hr.featurette-divider
       h1 团队项目
       for repo,i in feedr.feeds.githubRepos
-        .featurette
-          if i%2
-            img.featurette-image.pull-left(src='#{repo.name}/logo.png')
-          else
-            img.featurette-image.pull-right(src='#{repo.name}/logo.png')
-          h2.featurette-heading
-            | #{repo.name}
-            span.muted #{repo.fullname}
-          p.lead
-            | !{repo.description}
-        hr.featurette-divider
+        if repo.name!='pansafe.github.com'
+          .featurette
+            if i%2
+              img.featurette-image.pull-left(src='#{repo.name}/logo.png')
+            else
+              img.featurette-image.pull-right(src='#{repo.name}/logo.png')
+            h2.featurette-heading
+              | #{repo.name}
+              span.muted #{repo.fullname}
+            p.lead
+              | !{repo.description}
+            p
+              a.btn.btn-primary(href='https://github.com/pansafe/#{repo.name}/',target='_blank')
+          hr.featurette-divider
