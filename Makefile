@@ -1,7 +1,6 @@
 
-buildmak:config
+build:config
 	docpad generate
-# .SILENT: config
 config:
 ifdef GITHUB_USERNAME
 else
@@ -14,10 +13,9 @@ endif
 publish: config
 	rm -R -f out
 	git clone --branch master git@github.com:pansafe/pansafe.github.com.git out
+	rm -R -f out/*
 	docpad generate
-	cd out 
-	git add --all
-	git commit -m 'compiled from branch src'
-	git push origin master
-	cd ..
+	git --git-dir out/.git --work-tree=out add --all
+	git --git-dir out/.git --work-tree=out commit -m 'compiled from branch src'
+	git --git-dir out/.git --work-tree=out push origin master
 	rm -R -f out
