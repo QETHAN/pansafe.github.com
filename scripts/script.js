@@ -1,7 +1,8 @@
 (function() {
 
   $(function() {
-    return $('#myCarousel').carousel();
+    $('#myCarousel').carousel();
+    return $('[title]').tooltip();
   });
 
 }).call(this);
