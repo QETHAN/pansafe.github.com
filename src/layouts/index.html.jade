@@ -17,10 +17,9 @@ block content
       h1 团队成员
       .row
         for member in feedr.feeds.githubMembers
-          .span2
-            a(href='https://github.com/#{member.login}/',title='去github上看看他/她',target='_blank')
-              img.img-circle(src=member.avatar_url,style='width:100%;max-width:80px;')
-            h2 #{member.login}
+          .span1
+            a(href='https://github.com/#{member.login}/',target='_blank')
+              img.img-circle(src=member.avatar_url,style='width:100%;max-width:80px;',title='#{member.login}')
     #repos
       hr.featurette-divider
       h1 团队项目
