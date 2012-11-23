@@ -1,2 +1,3 @@
 $ ->
   $('#myCarousel').carousel()
+  $('[title]').tooltip()
