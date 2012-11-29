@@ -1,0 +1,55 @@
+!!! 5
+html(lang='en')
+  head
+      meta(charset='utf-8')
+      title=title||'不能忘标题啊，亲！'
+      meta(name='viewport', content='width=device-width, initial-scale=1.0')
+      meta(name="description",content='')
+      meta(name="keywords",content='')
+      meta(name="author",content='Pansafe Software')
+      link(rel='stylesheet',href='#{root}/vendor/twitter-bootstrap/css/bootstrap.min.css')
+      link(rel='stylesheet',href='#{root}/vendor/twitter-bootstrap/css/bootstrap.responsive.min.css')
+      link(rel='stylesheet',href='#{root}/style.css')
+      //if lt IE 9
+        script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+      link(rel='shortcut icon', href='ico/favicon.ico')
+      link(rel='apple-touch-icon-precomposed', sizes='144x144', href='ico/apple-touch-icon-144-precomposed.png')
+      link(rel='apple-touch-icon-precomposed', sizes='114x114', href='ico/apple-touch-icon-114-precomposed.png')
+      link(rel='apple-touch-icon-precomposed', sizes='72x72', href='ico/apple-touch-icon-72-precomposed.png')
+      link(rel='apple-touch-icon-precomposed', href='ico/apple-touch-icon-57-precomposed.png')
+  body
+    .container.navbar-wrapper
+      .navbar.navbar-inverse
+        .navbar-inner
+          a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand(href='./') 盘石软件研发团队
+          .nav-collapse.collapse
+            ul.nav
+              li
+                a(href='./#members') 团队成员
+              li
+                a(href='./#repos') 团队项目
+              li.divider-vertical
+              li
+                a(href='https://github.com/pansafe/') Github
+              li
+                a(href='http://www.pansafe.com') 公司主页
+              for page in files
+                if !page.path.match(/404\.html$/)
+                  li
+                    a(href='#{root}#{page.path}') #{page.title}
+    block content
+    .container
+      footer
+        p
+          | © 2012  盘石软件（上海）有限公司 版权所有
+    script(src='#{root}/vendor/jquery.js')
+    script(src='#{root}/vendor/twitter-bootstrap/js/bootstrap.min,js')
+    script(src='#{root}/vendor/log.js')
+    script(src='#{root}/vendor/modernizr.js')
+    :coffeescript
+      $ ->
+        $('#myCarousel').carousel()
