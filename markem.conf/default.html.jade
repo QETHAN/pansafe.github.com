@@ -2,13 +2,14 @@
 html(lang='en')
   head
       meta(charset='utf-8')
-      title=document.title||site.title
+      title=title||'不能忘标题啊，亲！'
       meta(name='viewport', content='width=device-width, initial-scale=1.0')
-      meta(name="description",content=getPreparedDescription())
-      meta(name="keywords",content=getPreparedKeywords())
-      meta(name="author",content=site.author||'')
-      !=getBlock('meta').toHTML()
-      !=getBlock('styles').add(["vendor/twitter-bootstrap/css/bootstrap.min.css","vendor/twitter-bootstrap/css/bootstrap-responsive.min.css","styles/style.css"]).toHTML()
+      meta(name="description",content='')
+      meta(name="keywords",content='')
+      meta(name="author",content='Pansafe Software')
+      link(rel='stylesheet',href='#{root}/vendor/twitter-bootstrap/css/bootstrap.min.css')
+      link(rel='stylesheet',href='#{root}/vendor/twitter-bootstrap/css/bootstrap.responsive.min.css')
+      link(rel='stylesheet',href='#{root}#{path}style.css')
       //if lt IE 9
         script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
       link(rel='shortcut icon', href='ico/favicon.ico')
@@ -24,7 +25,7 @@ html(lang='en')
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.brand(href='./') #{site.title}
+          a.brand(href='./') 盘石软件研发团队
           .nav-collapse.collapse
             ul.nav
               li
@@ -36,19 +37,19 @@ html(lang='en')
                 a(href='https://github.com/pansafe/') Github
               li
                 a(href='http://www.pansafe.com') 公司主页
-              for page in getCollection('pages').toJSON()
-                li
-                  a(href=page.url.replace(/^\//,'')) #{page.title}
+              for page in files
+                if !path.match(/404\.html/)
+                  li
+                    a(href='#{root}#{page.path}') #{page.title}
     block content
     .container
       footer
         p
           | © 2012  盘石软件（上海）有限公司 版权所有
-    !=getBlock('scripts').add(["vendor/jquery.js","vendor/twitter-bootstrap/js/bootstrap.min.js","vendor/log.js","vendor/modernizr.js","scripts/script.js"]).toHTML()
-
-
-//- # 					<% for document in @getCollection('pages').toJSON(): %>
-//- # 						<li typeof="sioc:Page" about="<%= document.url %>" class="<%= 'active'  if @document.url is document.url %>">
-//- # 							<a href="<%= document.url %>" property="dc:title"><%= document.title %></a>
-//- # 						</li>
-//- # 					<% end %>
+    script(src='#{root}/vendor/jquery.js')
+    script(src='#{root}/vendor/twitter-bootstrap/js/bootstrap.min,js')
+    script(src='#{root}/vendor/log.js')
+    script(src='#{root}/vendor/modernizr.js')
+    :coffeescript
+      $ ->
+        $('#myCarousel').carousel()
