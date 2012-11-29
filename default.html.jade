@@ -19,7 +19,7 @@ html(lang='en')
       link(rel='apple-touch-icon-precomposed', href='ico/apple-touch-icon-57-precomposed.png')
   body
     .container.navbar-wrapper
-      .navbar.navbar-inverse
+      .navbar
         .navbar-inner
           a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
             span.icon-bar
@@ -37,17 +37,23 @@ html(lang='en')
                 a(href='https://github.com/pansafe/') Github
               li
                 a(href='http://www.pansafe.com') 公司主页
-              for page in files
-                if !page.path.match(/404\.html$/)
-                  li
-                    a(href='#{root}#{page.path}') #{page.title}
+              if path.match(/\/$/)
+                for page in files
+                  if !page.path.match(/404\.html$/)
+                    li
+                      a(href='#{root}#{page.path}') #{page.title}
+              else
+                for page in parent.files
+                  if !page.path.match(/404\.html$/)
+                    li
+                      a(href='#{root}#{page.path}') #{page.title}
     block content
     .container
       footer
         p
           | © 2012  盘石软件（上海）有限公司 版权所有
     script(src='#{root}/vendor/jquery.js')
-    script(src='#{root}/vendor/twitter-bootstrap/js/bootstrap.min,js')
+    script(src='#{root}/vendor/twitter-bootstrap/js/bootstrap.min.js')
     script(src='#{root}/vendor/log.js')
     script(src='#{root}/vendor/modernizr.js')
     :coffeescript
