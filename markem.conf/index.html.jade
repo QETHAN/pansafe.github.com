@@ -1,9 +1,10 @@
 #myCarousel.carousel.slide
   .carousel-inner
+    - i=0
     for file in files
       if file.associatedFiles
-        for pic,i in file.associatedFiles
-          .item(class=(i||'active'))
+        for pic in file.associatedFiles
+          .item(class=(i++||'active'))
             img(src='#{root}#{pic}', alt='')
             .container
               .carousel-caption
