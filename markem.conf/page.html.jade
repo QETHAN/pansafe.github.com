@@ -1,5 +1,15 @@
-.container(style='margin-top:80px')
+#myCarousel.carousel.slide
+  .carousel-inner
+    if typeof(associatedFiles)!=='undefined'
+      for pic,i in associatedFiles
+        .item(class=(i||'active'))
+          img(src='#{root}#{pic}', alt='')
+          .container
+            .carousel-caption
+              h1 #{decodeURIComponent(pic.match(/\/([^\/]+)\.jpg/)[1])}
+  a.left.carousel-control(href='#myCarousel', data-slide='prev') ‹
+  a.right.carousel-control(href='#myCarousel', data-slide='next') ›
+.container.marketing
   article
-    h1.page-header=title
     !=content
   hr.featurette-divider
