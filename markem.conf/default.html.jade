@@ -9,7 +9,7 @@ html(lang='en')
       meta(name="author",content='Pansafe Software')
       link(rel='stylesheet',href='#{root}/vendor/twitter-bootstrap/css/bootstrap.min.css')
       link(rel='stylesheet',href='#{root}/vendor/twitter-bootstrap/css/bootstrap.responsive.min.css')
-      link(rel='stylesheet',href='#{root}#{path}style.css')
+      link(rel='stylesheet',href='#{root}/style.css')
       //if lt IE 9
         script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
       link(rel='shortcut icon', href='ico/favicon.ico')
@@ -38,7 +38,7 @@ html(lang='en')
               li
                 a(href='http://www.pansafe.com') 公司主页
               for page in files
-                if !path.match(/404\.html/)
+                if !page.path.match(/404\.html$/)
                   li
                     a(href='#{root}#{page.path}') #{page.title}
     block content
