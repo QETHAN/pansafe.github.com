@@ -1,0 +1,16 @@
+#myCarousel.carousel.slide
+  .carousel-inner
+    if typeof(associatedFiles)!=='undefined'
+      for pic,i in associatedFiles
+        .item(class=(i||'active'))
+          img(src='#{root}#{pic}', alt='')
+          .container
+            .carousel-caption
+              h1 #{decodeURIComponent(pic.match(/\/([^\/]+)\.jpg/)[1])}
+  a.left.carousel-control(href='#myCarousel', data-slide='prev') ‹
+  a.right.carousel-control(href='#myCarousel', data-slide='next') ›
+.container.marketing
+  article
+    !=content
+  a(href='https://github.com/pansafe/pansafe.github.com/edit/src#{path.replace(/\.html/,".md")}') 完善这一页的内容
+  hr.featurette-divider
