@@ -37,7 +37,7 @@ html(lang='en')
                 a(href='https://github.com/pansafe/') Github
               li
                 a(href='http://www.pansafe.com') 公司主页
-              for page in files
+              for page in path.match(/\/$/)?files:parent.files
                 if !page.path.match(/404\.html$/)
                   li
                     a(href='#{root}#{page.path}') #{page.title}
