@@ -17,9 +17,8 @@
     .row
       for member in globals.members
         .span2
-          a(href='https://github.com/#{member.login}/',title='去github上看看他/她',target='_blank')
-            img.img-circle(src=member.avatar_url,style='width:100%;max-width:80px;')
-          h2 #{member.name}
+          a(href='https://github.com/#{member.login}/',target='_blank')
+            img.img-circle(src=member.avatar_url,title=member.name,style='width:100%;max-width:80px;')
   #repos
     hr.featurette-divider
     h1 团队项目
