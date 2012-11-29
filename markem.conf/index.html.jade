@@ -13,7 +13,7 @@
   a.right.carousel-control(href='#myCarousel', data-slide='next') ›
 .container.marketing
   #members
-    h1 团队成员
+    h1 我们的成员
     .row
       for member in globals.members
         .span2
@@ -21,7 +21,7 @@
             img.img-circle(src=member.avatar_url,title=member.name||member.login,style='width:100%;max-width:80px;')
   #repos
     hr.featurette-divider
-    h1 团队项目
+    h1 我们的项目
     for repo,i in globals.projects
       if repo.name!='pansafe.github.com'
         .featurette
