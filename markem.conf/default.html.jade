@@ -37,10 +37,16 @@ html(lang='en')
                 a(href='https://github.com/pansafe/') Github
               li
                 a(href='http://www.pansafe.com') 公司主页
-              for page in path.match(/\/$/)?files:parent.files
-                if !page.path.match(/404\.html$/)
-                  li
-                    a(href='#{root}#{page.path}') #{page.title}
+              if path.match(/\/$/)
+                for page in files
+                  if !page.path.match(/404\.html$/)
+                    li
+                      a(href='#{root}#{page.path}') #{page.title}
+              else
+                for page in parent.files
+                  if !page.path.match(/404\.html$/)
+                    li
+                      a(href='#{root}#{page.path}') #{page.title}
     block content
     .container
       footer
