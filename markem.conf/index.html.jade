@@ -1,9 +1,10 @@
 #myCarousel.carousel.slide
   .carousel-inner
+    - i=0
     for file in files
       if file.associatedFiles
-        for pic,i in file.associatedFiles
-          .item(class=(i||'active'))
+        for pic in file.associatedFiles
+          .item(class=(i++||'active'))
             img(src='#{root}#{pic}', alt='')
             .container
               .carousel-caption
@@ -13,22 +14,22 @@
   a.right.carousel-control(href='#myCarousel', data-slide='next') ›
 .container.marketing
   #members
-    h1 我们的成员
+    h1 we ARE ↓
     .row
       for member in globals.members
-        .span2
+        .pull-left
           a(href='https://github.com/#{member.login}/',target='_blank')
-            img.img-circle(src=member.avatar_url,title=member.name||member.login,style='width:100%;max-width:80px;')
+            img.img-circle(src=member.avatar_url,title=member.name||member.login,style='width:70px;margin:5px;')
   #repos
     hr.featurette-divider
-    h1 我们的项目
+    h1 we DO ↓
     for repo,i in globals.projects
       if repo.name!='pansafe.github.com'
         .featurette
           if i%2
-            img.featurette-image.pull-left(style='width:40%',src='#{repo.homepage}logo.png')
+            img.featurette-image.pull-left(style='width:40%',src='#{root}/associated-files/#{repo.name}.png')
           else
-            img.featurette-image.pull-right(style='width:40%',src='#{repo.homepage}logo.png')
+            img.featurette-image.pull-right(style='width:40%',src='#{root}/associated-files/#{repo.name}.png')
           h2.featurette-heading
             | #{repo.name}
             span.muted #{repo.fullname}
